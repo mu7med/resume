@@ -39,17 +39,66 @@
 
 <body data-home-page="Home.html" data-home-page-title="Home" data-path-to-root="./" data-include-products="false"
   class="u-body u-palette-5-base u-xl-mode" data-lang="en" style="font-family: 'Poppins', sans-serif;">
+  <style>
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+
+    .nav-link.contact-btn {
+      border: 1px solid white;
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: white;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background: #1a1a1a;
+        padding: 20px 0;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+  </style>
   <nav
-    style="position: fixed; top: 0; width: 100%; background: #1a1a1a; z-index: 1000; padding: 15px 0; text-align: center; border-bottom: 2px solid #444;">
-    <a href="#"
-      style="color: white; margin: 0 20px; text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 500;">Home</a>
-    <a href="#carousel_0681"
-      style="color: white; margin: 0 20px; text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 500;">Experience</a>
-    <a href="#carousel_c9e4"
-      style="color: white; margin: 0 20px; text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 500;">About
-      Me</a>
-    <a href="mailto:Mu7med@live.com"
-      style="color: white; margin: 0 20px; text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 500; border: 1px solid white; padding: 5px 15px; border-radius: 20px;">Contact</a>
+    style="position: fixed; top: 0; width: 100%; background: #1a1a1a; z-index: 1000; padding: 15px 20px; border-bottom: 2px solid #444; display: flex; justify-content: space-between; align-items: center;">
+    <span style="color: white; font-family: 'Poppins', sans-serif; font-weight: 700;">M.Abdullah</span>
+    <button class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('active')">☰</button>
+    <div class="nav-menu">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#carousel_0681" class="nav-link">Experience</a>
+      <a href="#carousel_c9e4" class="nav-link">About Me</a>
+      <a href="mailto:Mu7med@live.com" class="nav-link contact-btn">Contact</a>
+    </div>
   </nav>
   <section class="u-clearfix u-image u-section-1" id="sec-7ab1" data-image-width="1980" data-image-height="1320"
     style="margin-top: 60px;">
@@ -254,7 +303,7 @@
                     data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">97%</h3>
                 </div>
               </div>
-              <h5 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-4">Operation Projects</h5>
+              <h5 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-4">Azure DevOps</h5>
             </div>
           </div>
           <div
@@ -267,7 +316,7 @@
                     data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">75%</h3>
                 </div>
               </div>
-              <h5 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-6">cloud</h5>
+              <h5 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-6">OCI / AWS / GCP</h5>
             </div>
           </div>
           <div
@@ -280,7 +329,7 @@
                     data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">80%</h3>
                 </div>
               </div>
-              <h5 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-8">kubernetes</h5>
+              <h5 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-8">Kubernetes (CKA)</h5>
             </div>
           </div>
           <div
@@ -293,8 +342,7 @@
                     data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">85%</h3>
                 </div>
               </div>
-              <h5 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-10">Security<br>
-              </h5>
+              <h5 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-10">Security (CKS)</h5>
             </div>
           </div>
         </div>
@@ -311,8 +359,8 @@
       <div class="u-align-left u-expanded-width-sm u-expanded-width-xs u-video u-video-1">
         <div class="embed-responsive embed-responsive-1">
           <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" class="embed-responsive-item"
-            src="https://www.youtube.com/embed/kBV8gPVZNEE?mute=0&amp;showinfo=0&amp;controls=0&amp;start=0"
-            frameborder="0" allowfullscreen=""></iframe>
+            src="https://www.youtube.com/embed/kBV8gPVZNEE?rel=0&amp;showinfo=1&amp;controls=1" frameborder="0"
+            allowfullscreen=""></iframe>
         </div>
       </div>
       <h2 class="u-align-center-xs u-text u-text-default u-text-1"> Unifying software lifecycle</h2>

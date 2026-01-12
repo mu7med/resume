@@ -1,0 +1,9 @@
+# robots.txt for mu7med.org
+User-agent: *
+Allow: /
+
+# Block placeholder blog content
+Disallow: /blog/
+
+# Sitemap location
+Sitemap: https://mu7med.org/sitemap.xml
