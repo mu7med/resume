@@ -40,66 +40,185 @@
 <body data-home-page="Home.html" data-home-page-title="Home" data-path-to-root="./" data-include-products="false"
   class="u-body u-palette-5-base u-xl-mode" data-lang="en" style="font-family: 'Poppins', sans-serif;">
   <style>
-    .nav-menu {
+    /* Glass Navigation Container */
+    .glass-nav-container {
+      position: fixed;
+      top: 0;
+      /* Align to top */
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 9999;
+    }
+
+    /* Glass Effect (Full Width Bar) */
+    .glass-nav {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      /* keep content centered */
+      align-items: center;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.5);
+      /* Decreased opacity as requested */
+      backdrop-filter: blur(12px);
+      /* Slightly lower blur for clearer glass feel */
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      /* Subtle border */
+      padding: 15px 0;
+      border-radius: 0;
+      /* Remove pill shape */
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .glass-nav:hover {
+      background: rgba(10, 10, 10, 0.6);
+    }
+
+    /* Navigation Links */
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      /* Increased gap for full width feel */
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
     .nav-link {
-      color: white;
+      color: #ffffff !important;
+      /* Pure white color forced */
       text-decoration: none;
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      /* Subtle radius on hover */
+      transition: all 0.3s ease;
+      position: relative;
     }
 
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Active/Contact Button (Orange Gradient to match Download CV #f7914d) */
     .nav-link.contact-btn {
-      border: 1px solid white;
-      padding: 5px 15px;
-      border-radius: 20px;
+      background: linear-gradient(135deg, #f7914d 0%, #ffaa6b 100%);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(247, 145, 77, 0.3);
+      margin-left: 5px;
     }
 
+    .nav-link.contact-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(247, 145, 77, 0.4);
+      background: linear-gradient(135deg, #ff9e5e 0%, #ffbc85 100%);
+      color: #fff;
+    }
+
+    /* Mobile Responsive Styles */
     .hamburger {
       display: none;
-      cursor: pointer;
-      font-size: 24px;
       color: white;
+      font-size: 24px;
       background: none;
       border: none;
+      padding: 10px;
+      cursor: pointer;
     }
 
     @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 50px;
+      .glass-nav-container {
+        top: 0;
         left: 0;
         width: 100%;
+        max-width: 100%;
+        transform: none;
+      }
+
+      .glass-nav {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        justify-content: space-between;
+        padding: 10px 20px;
+        background: rgba(22, 22, 22, 0.95);
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
         background: #1a1a1a;
-        padding: 20px 0;
+        flex-direction: column;
+        gap: 0;
+        transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .nav-menu.active {
+        height: auto;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .nav-link {
+        width: 100%;
+        justify-content: center;
         display: flex;
+        padding: 15px;
+        border-radius: 0;
+      }
+
+      .nav-link.contact-btn {
+        margin: 10px 20px;
+        width: auto;
+        border-radius: 100px;
       }
 
       .hamburger {
         display: block;
       }
+
+      /* Hide regular menu initially on mobile */
+      .nav-menu {
+        display: flex;
+        /* Logic handled by height animation */
+      }
     }
   </style>
-  <nav
-    style="position: fixed; top: 0; width: 100%; background: #1a1a1a; z-index: 1000; padding: 15px 20px; border-bottom: 2px solid #444; display: flex; justify-content: space-between; align-items: center;">
-    <span style="color: white; font-family: 'Poppins', sans-serif; font-weight: 700;">M.Abdullah</span>
-    <button class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('active')">☰</button>
-    <div class="nav-menu">
-      <a href="#" class="nav-link">Home</a>
-      <a href="#carousel_0681" class="nav-link">Experience</a>
-      <a href="#carousel_c9e4" class="nav-link">About Me</a>
-      <a href="mailto:Mu7med@live.com" class="nav-link contact-btn">Contact</a>
-    </div>
-  </nav>
+
+  <div class="glass-nav-container">
+    <nav class="glass-nav">
+      <!-- Mobile Logo for context (optional, or just hamburger) -->
+      <span class="u-hidden-md u-hidden-lg u-hidden-xl"
+        style="color:white; font-weight:700; font-family:'Poppins'">Menu</span>
+
+      <button class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="nav-menu">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#carousel_0681" class="nav-link">Experience</a>
+        <a href="#carousel_c9e4" class="nav-link">About Me</a>
+        <a href="mailto:Mu7med@live.com" class="nav-link contact-btn">Contact Me</a>
+      </div>
+    </nav>
+  </div>
   <section class="u-clearfix u-image u-section-1" id="sec-7ab1" data-image-width="1980" data-image-height="1320"
     style="margin-top: 60px;">
     <div class="data-layout-selected u-clearfix u-layout-wrap u-layout-wrap-1">
